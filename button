@@ -1,4 +1,5 @@
-int pinBouton;
+int pinBouton_1 = 4;
+int etatBouton_2 = 0;
 
 void setup()
 
@@ -6,9 +7,7 @@ void setup()
 
     Serial.begin(9600);
 
-    pinBouton=2;
-
-    pinMode(pinBouton,INPUT);
+    pinMode(pinBouton_1,INPUT);
 
 }
 
@@ -16,7 +15,12 @@ void loop()
 
 {
 
-    boolean etatBouton=digitalRead(pinBouton);
-
-    Serial.println(etatBouton);
+    boolean etatBouton_1=digitalRead(pinBouton_1);
+    
+    if(etatBouton_1 != etatBouton_2){
+    Serial.println(etatBouton_1, DEC);
+    Serial.println("-");
+    etatBouton_2 = etatBouton_1;
+  }
 }
+
